@@ -1,10 +1,10 @@
 #include <iostream>
-
 #include <Node.hpp>
 #include <Asset.hpp>
 #include <Player.hpp>
 #include <Monster.hpp>
 #include <AdventureGameMap.hpp>
+#include <Combatant.hpp>
 
 
 using namespace std;
@@ -95,87 +95,194 @@ std::string getLastWord(const std::string &str)
 //
 int main()
 {
-    // AdventureGameMap _gameMap;
+    //AdventureGameMap _gameMap;
+
+    //vector<AdventureGameMap> gameMap;
+
 
     vector<Node> gameMap;
 
-    // build all nodes
-    Node home(0, "Home");
-    home.Description = "You are standing in the front yard of a warm and comfortable home that exudes charm and\ntranquility, inviting visitors to feel welcome even before they step inside.\n";
+    // //     // build all nodes
 
-    Node mountain(1, "Mountain");
-    mountain.Description = "A majestic mountain rises grandly from the landscape, its towering\npeak piercing the sky and exuding a sense of awe and reverence.\n";
+        Node home(0, "Home");
+        home.Description = "You are standing in the front yard of a warm and comfortable home that exudes charm and\ntranquility, inviting visitors to feel welcome even before they step inside.\n-------------------";
 
-    Node city(2, "City");
-    city.Description = "A typical city is a bustling hub of activity, blending diverse elements of\narchitecture, culture, and human interaction. It features a variety of neighborhoods,\neach with its own character, from high-rise apartment buildings and business\ndistricts to residential areas and parks.\n";
+        Node southCarolina(1, "South Carolina");
+        southCarolina.Description = "From the sun-drenched Atlantic beaches to the rolling hills and Blue Ridge foothills, South Carolina blends natural beauty with rich history. Its lush forests, serene lakes, and historic cities like Charleston offer a timeless Southern charm.\n-------------------";
 
-    Node ocean(3, "Ocean");
-    ocean.Description = "The sea appears restless and chaotic, with surging swells that seem to roil\nand churn, as if the ocean itself is furious, thrashing in a wild, unpredictable rhythm.\n";
+        Node california(2, "California");
+        california.Description = "A vibrant state stretches along the Pacific coast, its diverse landscape\nfeaturing everything from sandy beaches to towering redwood forests and bustling cities.\n-------------------";
 
-    Node island(4, "Island");
-    island.Description = "In the midst of an angry sea, the island appears as a defiant outpost,\nbattered but unyielding against the surrounding chaos. Jagged cliffs rise abruptly\nfrom the churning waters, their rugged faces streaked with dark, wet stone, dripping\nwith the constant assault of waves.\n";
+        Node northCarolina(3, "North Carolina");
+        northCarolina.Description = "Rolling hills meet coastal plains in this diverse state, where historic\ncharm blends seamlessly with modern innovation and natural beauty.\n-------------------";
 
-    Node hut(5, "Hut");
-    hut.Description = "A hut stands as a weathered refuge, small and sturdy against the backdrop of\nthe raging sea. Its wooden walls, gray and splintered from years of exposure to\nsalt and wind, are patched together with whatever materials the island could provide—driftwood,\npalm fronds, and rough-hewn stone.\nThe roof is thatched with dried leaves, lashed tightly\nto withstand the powerful gusts that whip across the island.\n";
+        Node disneyLand(4, "Disneyland");
+        disneyLand.Description = "A magical kingdom springs to life with whimsical castles and themed\nlands, where imagination and adventure create an enchanting atmosphere.\n-------------------";
 
-    Node quicksand(6, "Quick Sand");
-    quicksand.Description = "A patch of treacherous quicksand lurks, deceptively blending into the surrounding\nterrain. It lies at the edge of a narrow clearing, where the ground transitions\nfrom rocky soil to a stretch of damp, silty earth.\n";
+        Node goldenGateBridge(5, "Golden Gate Bridge");
+        goldenGateBridge.Description = "An iconic orange bridge spans majestically across the bay, its\ntowers rising through the rolling fog to connect two vibrant shores.\n-------------------";
 
-    Node cave(7, "Cave");
-    cave.Description = "Here is a cave nestled into the rocky cliffs that rise above the angry sea, is a cave that\nseems carved by nature's fury over centuries. Its entrance is half-hidden by\nthick vines and jagged boulders, giving it an air of mystery and shelter.\nThe mouth of the cave is wide and low, just tall enough\nfor a person to crouch and enter, and it faces away from\nthe wind, offering some protection from the relentless storm.\n";
+        Node brooksStadium(6, "Brooks Stadium");
+        brooksStadium.Description = "A spirited sports arena rises from the campus grounds, its stands\nechoing with cheers and team pride as athletes compete beneath open skies.\n-------------------";
 
-    Node beach(8, "Beach");
-    beach.Description = "A beautiful beach stretches out in a graceful curve, bordered by soft, powdery sand that\ngleams white under the sunlight. Each grain feels fine and smooth beneath bare\nfeet, as though sculpted by the gentle hands of time and tide. The shoreline\nis kissed by the crystal-clear waters of the ocean,\nwhere the surf laps quietly and rhythmically, creating a soft,\nsoothing sound with each wave.\n";
+        Node skyWheel(7, "SkyWheel");
+        skyWheel.Description = "A majestic observation wheel turns slowly against the coastal horizon,\nits gleaming pods offering breathtaking views of ocean and cityscape below.\n-------------------";
 
-    // connect nodes paths
-    home.AddConnection(&mountain);
-    home.AddConnection(&city);
+        Node biltmoreEstate(8, "Biltmore Estate");
+        biltmoreEstate.Description = "A grand château nestles in the Blue Ridge Mountains, its gilded\narchitecture and sprawling gardens telling tales of America's Gilded Age.\n-------------------";
 
-    mountain.AddConnection(&home);
-    mountain.AddConnection(&ocean);
-    mountain.AddConnection(&city);
+        Node wrightBrothersNationalMemorial(9, "Wright Brothers National Memorial");
+        wrightBrothersNationalMemorial.Description = "Historic dunes and monuments mark the birthplace of flight, where\nthe spirit of innovation and determination still soars through the air.\n-------------------";
 
-    ocean.AddConnection(&mountain);
-    ocean.AddConnection(&city);
-    ocean.AddConnection(&island);
+        Node newYork(10, "New York");
+        newYork.Description = "A dynamic metropolis pulses with energy, its towering skyscrapers and\ndiverse neighborhoods creating a unique tapestry of urban life.\n-------------------";
 
-    city.AddConnection(&home);
-    city.AddConnection(&mountain);
-    city.AddConnection(&ocean);
+        Node statueOfLiberty(11, "Statue of Liberty");
+        statueOfLiberty.Description = "A copper-clad sentinel stands proudly in the harbor, torch raised\nhigh as a beacon of freedom and hope for all who approach.\n-------------------";
 
-    island.AddConnection(&ocean);
-    island.AddConnection(&cave);
-    island.AddConnection(&beach);
-    island.AddConnection(&quicksand);
-    island.AddConnection(&hut);
+        Node pennsylvania(12, "Pennsylvania");
+        pennsylvania.Description = "Historic streets and rolling countryside paint a picture of American\nheritage, where colonial charm meets modern industry.\n-------------------";
 
-    cave.AddConnection(&home); // one way connection
-    cave.AddConnection(&beach);
-    cave.AddConnection(&island);
+        Node libertyBell(13, "Liberty Bell");
+        libertyBell.Description = "An enduring symbol of independence sits silently yet powerful,\nits famous crack a testament to the endurance of liberty.\n-------------------";
 
-    beach.AddConnection(&cave);
-    beach.AddConnection(&island);
+        Node hersheysChocolateWorld(14, "Hershey's Chocolate World");
+        hersheysChocolateWorld.Description = "A sweet wonderland welcomes visitors with the rich aroma of chocolate,\nits interactive exhibits and tours celebrating the magic of candy-making.\n-------------------";
 
-    hut.AddConnection(&island);
-    hut.AddConnection(&quicksand);
+        Node georgia(15, "Georgia");
+        georgia.Description = "Southern hospitality flows through tree-lined streets and modern\ncities, where peach blossoms and historic squares create a welcoming atmosphere.\n-------------------";
 
-    quicksand.AddConnection(&hut);
-    quicksand.AddConnection(&island);
+        Node centennialOlympicPark(16, "Centennial Olympic Park");
+        centennialOlympicPark.Description = "A vibrant urban oasis commemorates Olympic spirit, with dancing\nfountains and gathering spaces bringing the community together.\n-------------------";
 
-    // build map in same order as Node Ids above.
-    // The index of each node in the vector must match it's id.
-    gameMap.push_back(home);
-    gameMap.push_back(mountain);
-    gameMap.push_back(city);
-    gameMap.push_back(ocean);
-    gameMap.push_back(island);
-    gameMap.push_back(hut);
-    gameMap.push_back(quicksand);
-    gameMap.push_back(cave);
-    gameMap.push_back(beach);
+        Node worldOfCocaCola(17, "World of Coca-Cola");
+        worldOfCocaCola.Description = "A modern tribute to an iconic beverage stands proudly, offering\nvisitors a fascinating journey through the history of refreshment.\n-------------------";
 
-    // build assets
-    //
+        Node nevada(18, "Nevada");
+        nevada.Description = "Desert landscapes stretch endlessly beneath bright stars, while\nglittering cities rise like oases from the sandy expanse.\n-------------------";
+
+        Node hooverDam(19, "Hoover Dam");
+        hooverDam.Description = "A monumental feat of engineering curves gracefully between canyon\nwalls, its massive concrete face holding back the mighty Colorado River.\n-------------------";
+
+        Node lasvegasSphere(20, "Las Vegas Sphere");
+        lasvegasSphere.Description = "A gleaming orb of light and technology rises from the desert,\nits massive LED surface transforming the nighttime skyline.\n-------------------";
+
+        Node empireStateBuilding(21, "Empire State Building");
+        empireStateBuilding.Description = "An iconic skyscraper towers over the city, a symbol of urban ambition and engineering marvel, offering breathtaking views of the skyline.\n-------------------";
+
+        // connect nodes paths
+        home.AddConnection(&southCarolina);
+        home.AddConnection(&california);
+
+        southCarolina.AddConnection(&home);
+        southCarolina.AddConnection(&skyWheel);
+        southCarolina.AddConnection(&brooksStadium);
+        southCarolina.AddConnection(&northCarolina);
+        southCarolina.AddConnection(&california);
+
+        skyWheel.AddConnection(&southCarolina);
+        skyWheel.AddConnection(&brooksStadium);
+
+        brooksStadium.AddConnection(&southCarolina);
+        brooksStadium.AddConnection(&skyWheel);
+
+        northCarolina.AddConnection(&southCarolina);
+        northCarolina.AddConnection(&biltmoreEstate);
+        northCarolina.AddConnection(&wrightBrothersNationalMemorial);
+        northCarolina.AddConnection(&nevada);
+        northCarolina.AddConnection(&newYork);
+        northCarolina.AddConnection(&california);
+
+        biltmoreEstate.AddConnection(&northCarolina);
+        biltmoreEstate.AddConnection(&wrightBrothersNationalMemorial);
+
+        wrightBrothersNationalMemorial.AddConnection(&biltmoreEstate);
+        wrightBrothersNationalMemorial.AddConnection(&northCarolina);
+
+        california.AddConnection(&home);
+        california.AddConnection(&southCarolina);
+        california.AddConnection(&disneyLand);
+        california.AddConnection(&goldenGateBridge);
+        california.AddConnection(&northCarolina);
+
+        nevada.AddConnection(&northCarolina);
+        nevada.AddConnection(&hooverDam);
+        nevada.AddConnection(&lasvegasSphere);
+        nevada.AddConnection(&newYork);
+
+        hooverDam.AddConnection(&nevada);
+        hooverDam.AddConnection(&lasvegasSphere);
+
+        lasvegasSphere.AddConnection(&nevada);
+        lasvegasSphere.AddConnection(&hooverDam);
+
+        newYork.AddConnection(&northCarolina);
+        newYork.AddConnection(&statueOfLiberty);
+        newYork.AddConnection(&empireStateBuilding);
+        newYork.AddConnection(&pennsylvania);
+        newYork.AddConnection(&nevada);
+
+        statueOfLiberty.AddConnection(&newYork);
+        statueOfLiberty.AddConnection(&empireStateBuilding);
+
+        empireStateBuilding.AddConnection(&newYork);
+        empireStateBuilding.AddConnection(&statueOfLiberty);
+
+        pennsylvania.AddConnection(&newYork);
+        pennsylvania.AddConnection(&libertyBell);
+        pennsylvania.AddConnection(&hersheysChocolateWorld);
+        pennsylvania.AddConnection(&georgia);
+
+        libertyBell.AddConnection(&pennsylvania);
+        libertyBell.AddConnection(&hersheysChocolateWorld);
+
+        hersheysChocolateWorld.AddConnection(&pennsylvania);
+        hersheysChocolateWorld.AddConnection(&libertyBell);
+
+        disneyLand.AddConnection(&california);
+        disneyLand.AddConnection(&goldenGateBridge);
+
+        goldenGateBridge.AddConnection(&california);
+        goldenGateBridge.AddConnection(&disneyLand);
+
+        georgia.AddConnection(&centennialOlympicPark);
+        georgia.AddConnection(&worldOfCocaCola);
+        georgia.AddConnection(&pennsylvania);
+        georgia.AddConnection(&home); // one way connection to home
+
+        centennialOlympicPark.AddConnection(&georgia);
+        centennialOlympicPark.AddConnection(&worldOfCocaCola);
+
+        worldOfCocaCola.AddConnection(&georgia);
+        worldOfCocaCola.AddConnection(&centennialOlympicPark);
+
+     // build map in same order as Node Ids above
+        gameMap.push_back(home);                           // 0
+        gameMap.push_back(southCarolina);                  // 1
+        gameMap.push_back(california);                     // 2
+        gameMap.push_back(northCarolina);                  // 3
+        gameMap.push_back(disneyLand);                     // 4
+        gameMap.push_back(goldenGateBridge);               // 5
+        gameMap.push_back(brooksStadium);                  // 6
+        gameMap.push_back(skyWheel);                       // 7
+        gameMap.push_back(biltmoreEstate);                 // 8
+        gameMap.push_back(wrightBrothersNationalMemorial); // 9
+        gameMap.push_back(newYork);                        // 10
+        gameMap.push_back(statueOfLiberty);                // 11
+        gameMap.push_back(pennsylvania);                   // 12
+        gameMap.push_back(libertyBell);                    // 13
+        gameMap.push_back(hersheysChocolateWorld);         // 14
+        gameMap.push_back(georgia);                        // 15
+        gameMap.push_back(centennialOlympicPark);          // 16
+        gameMap.push_back(worldOfCocaCola);                // 17
+        gameMap.push_back(nevada);                         // 18
+        gameMap.push_back(hooverDam);                      // 19
+        gameMap.push_back(lasvegasSphere);                 // 20
+        gameMap.push_back(empireStateBuilding);            // 21
+    
+
+    // // build assets
+    // //
     Asset flashlight("Flashlight", "A flashlight can be very useful, especially in dark places.", 50, false);
     Asset hammer("Hammer", "A hammer to help defend yourself", 150, true);
     Asset purplehaze("Purple haze", "A spell that renders opponents helpless.", 250, true);
