@@ -1,0 +1,272 @@
+#include <AdventureGameMap.hpp>
+
+namespace chants
+{
+    vector<Node> gameMap;
+    AdventureGameMap::AdventureGameMap()
+    {
+        buildMapNodes();
+        addAssetsToNodes();
+        addMonstersToNodes();
+
+        // Possible assets:
+        // Flashlight
+        // Atomic Map
+        // Compass
+        // Screwdriver
+        // Hammer
+        // Polyglot (translator)
+        // Treasure
+        // Hobgoblin Shield
+        // Garden Hose
+        // Chest
+        // Sign
+        // Rabbit Cage
+        // Paper Bag
+        // Captain’s Chair
+        // Purple Haze
+        // Drinking Glass
+        // Rusty Nail
+
+        // Possible monsters:
+        // 
+    }
+
+    void AdventureGameMap::buildMapNodes()
+    {
+        // build all nodes
+        Node home(0, "Home");
+        home.Description = "You are standing in the front yard of a warm and comfortable home that exudes charm and\ntranquility, inviting visitors to feel welcome even before they step inside.\n";
+
+        Node southCarolina(1, "South Carolina");
+        southCarolina.Description = "Nestled in the Appalachian Mountains, this region features towering\npeaks and rolling hills, where lush forests meet dramatic cliffs.\nThe air is crisp, and the landscape exudes a sense of timeless\nbeauty and quiet majesty.\n";
+
+
+        Node california(2, "California");
+        california.Description = "A vibrant state stretches along the Pacific coast, its diverse landscape\nfeaturing everything from sandy beaches to towering redwood forests and bustling cities.\n";
+
+        Node northCarolina(3, "North Carolina");
+        northCarolina.Description = "Rolling hills meet coastal plains in this diverse state, where historic\ncharm blends seamlessly with modern innovation and natural beauty.\n";
+
+        Node disneyLand(4, "Disneyland");
+        disneyLand.Description = "A magical kingdom springs to life with whimsical castles and themed\nlands, where imagination and adventure create an enchanting atmosphere.\n";
+
+        Node goldenGateBridge(5, "Golden Gate Bridge");
+        goldenGateBridge.Description = "An iconic orange bridge spans majestically across the bay, its\ntowers rising through the rolling fog to connect two vibrant shores.\n";
+
+        Node brooksStadium(6, "Brooks Stadium");
+        brooksStadium.Description = "A spirited sports arena rises from the campus grounds, its stands\nechoing with cheers and team pride as athletes compete beneath open skies.\n";
+
+        Node skyWheel(7, "SkyWheel");
+        skyWheel.Description = "A majestic observation wheel turns slowly against the coastal horizon,\nits gleaming pods offering breathtaking views of ocean and cityscape below.\n";
+
+        Node biltmoreEstate(8, "Biltmore Estate");
+        biltmoreEstate.Description = "A grand château nestles in the Blue Ridge Mountains, its gilded\narchitecture and sprawling gardens telling tales of America's Gilded Age.\n";
+
+        Node wrightBrothersNationalMemorial(9, "Wright Brothers National Memorial");
+        wrightBrothersNationalMemorial.Description = "Historic dunes and monuments mark the birthplace of flight, where\nthe spirit of innovation and determination still soars through the air.\n";
+
+        Node newYork(10, "New York");
+        newYork.Description = "A dynamic metropolis pulses with energy, its towering skyscrapers and\ndiverse neighborhoods creating a unique tapestry of urban life.\n";
+
+        Node statueOfLiberty(11, "Statue of Liberty");
+        statueOfLiberty.Description = "A copper-clad sentinel stands proudly in the harbor, torch raised\nhigh as a beacon of freedom and hope for all who approach.\n";
+
+        Node pennsylvania(12, "Pennsylvania");
+        pennsylvania.Description = "Historic streets and rolling countryside paint a picture of American\nheritage, where colonial charm meets modern industry.\n";
+
+        Node libertyBell(13, "Liberty Bell");
+        libertyBell.Description = "An enduring symbol of independence sits silently yet powerful,\nits famous crack a testament to the endurance of liberty.\n";
+
+        Node hersheysChocolateWorld(14, "Hershey's Chocolate World");
+        hersheysChocolateWorld.Description = "A sweet wonderland welcomes visitors with the rich aroma of chocolate,\nits interactive exhibits and tours celebrating the magic of candy-making.\n";
+
+        Node georgia(15, "Georgia");
+        georgia.Description = "Southern hospitality flows through tree-lined streets and modern\ncities, where peach blossoms and historic squares create a welcoming atmosphere.\n";
+
+        Node centennialOlympicPark(16, "Centennial Olympic Park");
+        centennialOlympicPark.Description = "A vibrant urban oasis commemorates Olympic spirit, with dancing\nfountains and gathering spaces bringing the community together.\n";
+
+        Node worldOfCocaCola(17, "World of Coca-Cola");
+        worldOfCocaCola.Description = "A modern tribute to an iconic beverage stands proudly, offering\nvisitors a fascinating journey through the history of refreshment.\n";
+
+        Node nevada(18, "Nevada");
+        nevada.Description = "Desert landscapes stretch endlessly beneath bright stars, while\nglittering cities rise like oases from the sandy expanse.\n";
+
+        Node hooverDam(19, "Hoover Dam");
+        hooverDam.Description = "A monumental feat of engineering curves gracefully between canyon\nwalls, its massive concrete face holding back the mighty Colorado River.\n";
+
+        Node lasvegasSphere(20, "Las Vegas Sphere");
+        lasvegasSphere.Description = "A gleaming orb of light and technology rises from the desert,\nits massive LED surface transforming the nighttime skyline.\n";
+
+        Node empireStateBuilding(21, "Empire State Building");
+        empireStateBuilding.Description = "An iconic skyscraper towers over the city, a symbol of urban ambition and engineering marvel, offering breathtaking views of the skyline.\n";
+
+        // connect nodes paths
+        home.AddConnection(&southCarolina);
+        home.AddConnection(&california);
+
+        southCarolina.AddConnection(&home);
+        southCarolina.AddConnection(&skyWheel);
+        southCarolina.AddConnection(&brooksStadium);
+        southCarolina.AddConnection(&northCarolina);
+        southCarolina.AddConnection(&california);
+
+        skyWheel.AddConnection(&southCarolina);
+        skyWheel.AddConnection(&brooksStadium);
+
+        brooksStadium.AddConnection(&southCarolina);
+        brooksStadium.AddConnection(&skyWheel);
+
+        northCarolina.AddConnection(&southCarolina);
+        northCarolina.AddConnection(&biltmoreEstate);
+        northCarolina.AddConnection(&wrightBrothersNationalMemorial);
+        northCarolina.AddConnection(&nevada);
+        northCarolina.AddConnection(&newYork);
+
+        biltmoreEstate.AddConnection(&northCarolina);
+        biltmoreEstate.AddConnection(&wrightBrothersNationalMemorial);
+
+        wrightBrothersNationalMemorial.AddConnection(&biltmoreEstate);
+        wrightBrothersNationalMemorial.AddConnection(&northCarolina);
+
+        california.AddConnection(&home);
+        california.AddConnection(&southCarolina);
+        california.AddConnection(&disneyLand);
+        california.AddConnection(&goldenGateBridge);
+
+        nevada.AddConnection(&northCarolina);
+        nevada.AddConnection(&hooverDam);
+        nevada.AddConnection(&lasvegasSphere);
+
+        hooverDam.AddConnection(&nevada);
+        hooverDam.AddConnection(&lasvegasSphere);
+
+        lasvegasSphere.AddConnection(&nevada);
+        lasvegasSphere.AddConnection(&hooverDam);
+
+        newYork.AddConnection(&northCarolina);
+        newYork.AddConnection(&statueOfLiberty);
+        newYork.AddConnection(&empireStateBuilding);
+        newYork.AddConnection(&pennsylvania);
+
+        statueOfLiberty.AddConnection(&newYork);
+        statueOfLiberty.AddConnection(&empireStateBuilding);
+
+        empireStateBuilding.AddConnection(&newYork);
+        empireStateBuilding.AddConnection(&statueOfLiberty);
+
+        pennsylvania.AddConnection(&newYork);
+        pennsylvania.AddConnection(&libertyBell);
+        pennsylvania.AddConnection(&hersheysChocolateWorld);
+
+        libertyBell.AddConnection(&pennsylvania);
+        libertyBell.AddConnection(&hersheysChocolateWorld);
+
+        hersheysChocolateWorld.AddConnection(&pennsylvania);
+        hersheysChocolateWorld.AddConnection(&libertyBell);
+
+        disneyLand.AddConnection(&california);
+        disneyLand.AddConnection(&goldenGateBridge);
+
+        goldenGateBridge.AddConnection(&california);
+        goldenGateBridge.AddConnection(&disneyLand);
+
+        georgia.AddConnection(&centennialOlympicPark);
+        georgia.AddConnection(&worldOfCocaCola);
+        georgia.AddConnection(&home); // one way connection to home
+
+        centennialOlympicPark.AddConnection(&georgia);
+        centennialOlympicPark.AddConnection(&worldOfCocaCola);
+
+        worldOfCocaCola.AddConnection(&georgia);
+        worldOfCocaCola.AddConnection(&centennialOlympicPark);
+
+     // build map in same order as Node Ids above
+        gameMap.push_back(home);                           // 0
+        gameMap.push_back(southCarolina);                  // 1
+        gameMap.push_back(california);                     // 2
+        gameMap.push_back(northCarolina);                  // 3
+        gameMap.push_back(disneyLand);                     // 4
+        gameMap.push_back(goldenGateBridge);               // 5
+        gameMap.push_back(brooksStadium);                  // 6
+        gameMap.push_back(skyWheel);                       // 7
+        gameMap.push_back(biltmoreEstate);                 // 8
+        gameMap.push_back(wrightBrothersNationalMemorial); // 9
+        gameMap.push_back(newYork);                        // 10
+        gameMap.push_back(statueOfLiberty);                // 11
+        gameMap.push_back(pennsylvania);                   // 12
+        gameMap.push_back(libertyBell);                    // 13
+        gameMap.push_back(hersheysChocolateWorld);         // 14
+        gameMap.push_back(georgia);                        // 15
+        gameMap.push_back(centennialOlympicPark);          // 16
+        gameMap.push_back(worldOfCocaCola);                // 17
+        gameMap.push_back(nevada);                         // 18
+        gameMap.push_back(hooverDam);                      // 19
+        gameMap.push_back(lasvegasSphere);                 // 20
+        gameMap.push_back(empireStateBuilding);            // 21
+    }
+
+    
+        //hi
+        // build assets
+    //
+    Asset flashlight("Flashlight", "A flashlight can be very useful, especially in dark places.", 50, false);
+    Asset hammer("Hammer", "A hammer to help defend yourself", 150, true);
+    Asset purplehaze("Purple haze", "A spell that renders opponents helpless.", 250, true);
+    Asset rustynail("Rusty nail", "Infect an opponent with tetanus.", 100, true);
+    Asset drinkingwater("Drinking water", "This may keep you from going thirsty.", 50, false);
+
+    // randomly add assets to nodes
+    int numOfNodes = gameMap.size();
+
+    srand(time(nullptr)); // seed the random number generator
+    int randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&flashlight);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&hammer);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&purplehaze);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&rustynail);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&drinkingwater);
+    
+
+    
+        //hi
+        // build monsters
+    // randomly add monsters to nodes
+    Monster ghoul("ghoul", 5000, 100);
+    Monster goblin("goblin", 6000, 100);
+    Monster kraken("kraken", 7000, 100);
+    Monster demon("demon", 5000, 100);
+    Monster griffin("griffin", 4000, 100);
+    int numOfNodes = gameMap.size();
+    int randNode = rand() % numOfNodes;
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddMonster(&ghoul);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddMonster(&goblin);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddMonster(&kraken);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddMonster(&demon);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddMonster(&griffin);
+    
+
+    std::vector<Node> AdventureGameMap::GetLocations() {
+    return gameMap;
+}
+    
+} // namespace chants
