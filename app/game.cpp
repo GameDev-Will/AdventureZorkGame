@@ -92,7 +92,7 @@ int Battle(Player &player, Monster &monster, vector<Asset> &offensiveAssets)
                     damage += offensiveAssets[choice - 1].GetValue();
                     cout << "Using " << offensiveAssets[choice - 1].GetName() << " for extra damage.\n";
                     //remove asset (single use)
-                    //offensiveAssets.erase(offensiveAssets.begin() + choice - 1);
+                    offensiveAssets.erase(offensiveAssets.begin() + choice - 1);
                 }
             }
             else
