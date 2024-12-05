@@ -2,13 +2,13 @@
 
 ## Game Description
 
-Chanticleer's Adventure Game is a single player text-based adventure game. The object of the game is to visit as many states as possible and visit their respective monuments and tourist spots. In order to win the game, the player must find the Golden Trophy. The player moves through the game by issuing text commands such as west, take keychain, or drop mug. After each movement, the game will respond by telling the player where they are currently located by describing their surroundings. Each location may have several paths in any number of directions. Each location may contain objects/souvenirs that the player can collect to remember their trip. The game can be saved and opened at the same location and game parameters.
+Chanticleer's Adventure Game is a single player text-based adventure game. The object of the game is to visit as many states as possible and visit their respective monuments and tourist spots. The player moves through the game by issuing text commands such as west, take keychain, or drop mug. After each movement, the game will respond by telling the player where they are currently located by describing their surroundings. Each location may have several paths in any number of directions. Each location may contain objects that will help you defeat monsters and souvenirs that the player can collect to remember their trip. The game can be saved and opened at the same location and game parameters.
 
 ## Game parameters are:
 
--	Player starts with budget worth 2,500 points
+-	Player starts with budget worth 12,500 points
 -	Player will have a certain amount of time to travel to as many locations as possible.
--	Player gain or lose points depending on the souvenirs they get during the game
+-	Player gain or lose points depending on the souvenirs they get and monsters faced during the game
 -	Player loses the game if she runs out of points or time
 
 ## Game objects of interest:
@@ -38,12 +38,11 @@ Chanticleer's Adventure Game is a single player text-based adventure game. The o
 -	Mug 
 -	Drinking Glass
 -	Snack
--	Golden Trophy
--	
--	
--	
--	
--	
+-	Hammer
+-	Gun
+-	Knife
+-	Bat
+-	Sword
 
 ## Possible Game Map Locations (Flushed out during storyboarding)
 
