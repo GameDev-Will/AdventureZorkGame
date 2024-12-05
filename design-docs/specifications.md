@@ -2,13 +2,13 @@
 
 ## Game Description
 
-Chanticleer's Adventure Game is a single player text-based adventure game. The object of the game is to rescue the Bird of Thule, which was captured by Hobgoblins (trolls) of Benightedness (ignorance). The player moves through the game by issuing text commands such as west, take hammer, or drop staff. After each movement, the game will respond by telling the player where she is currently located by describing her surroundings. Each location may have several paths in any number of directions. Each location may contain objects of interest with clues to where the Bird of Happiness might be located and/or danger from lurking Hobgoblins and hired Specters (ghosts). Along the way, the player can pick up items that will help fight enemies, unlock clues, and find the Bird of Thule. The game can be saved and opened at the same location and game parameters.
+Chanticleer's Adventure Game is a single player text-based adventure game. The object of the game is to visit as many states as possible and visit their respective monuments and tourist spots. The player moves through the game by issuing text commands such as west, take keychain, or drop mug. After each movement, the game will respond by telling the player where they are currently located by describing their surroundings. Each location may have several paths in any number of directions. Each location may contain objects/souvenirs that the player can collect to remember their trip. Along the way, the player can pick up objects and encounter celebrities that they can gain points from. The game can be saved and opened at the same location and game parameters.
 
 ## Game parameters are:
 
--	Player starts with health worth 12,500 points
--	Player will have a certain amount of time to find the Bird of Knowledge
--	Player gain or lose points depending on the events that happen during the game
+-	Player starts with budget worth 12,500 points
+-	Player will have a certain amount of time to travel to as many locations as possible.
+-	Player gain or lose points depending on the souvenirs they get and events that happen during the game
 -	Player loses the game if she runs out of points or time
 
 ## Game objects of interest:
@@ -16,28 +16,26 @@ Chanticleer's Adventure Game is a single player text-based adventure game. The o
 -	Bird of Knowledge (BOK) – Rescue to win the game 
 -	Hobgoblins – run the city of Benightedness
 -	Player – Chants Adventure is a single player game
--	Benightedness - world
+-	United States of America - world
 -	Path – all paths are bi-directional
 -	Location – points on the map
 -	Directions - node number or name
--	Objects – help or hurt the quest in finding BOH
--	Specters – hired by Hobgoblins to do their dirty work such as stealing health points
+-	Objects – help or hurt the quest during their travels
 
 ## List of actions (use: verb + noun) examples:
 
--	Walk, Take, Drop, Examine, Read, Push, Pull, Kick, Spray, Sit, Stand
--	Inventory (used to show list of items a player holds)
+-	Walk, Take, Drop
+-	Inventory (used to show list of souvenirs a player holds)
 
 ## Game Objects
 
-	Game objects all have a value in points. Also, not all game objects can be picked up by the player. Some may offer only clues; for example, on how to find the BOK. Some objects can be taken by the player but other may not be picked up. The player may pick up an object and drop it at another location in the game.
+	Game objects all have a value in points. Also, not all game objects can be picked up by the player. Some objects can be taken by the player but other may not be picked up. The player may pick up an object and drop it at another location in the game. 
 
 ## Possible list of objects;
--	Flashlight
--	Atomic Map
+-	Magnet
+-	Scarf
 -	Compass
 -	Screwdriver
--	Hammer
 -	Polyglot (translator)
 -	Treasure
 -	Hobgoblin Shield
@@ -47,9 +45,9 @@ Chanticleer's Adventure Game is a single player text-based adventure game. The o
 -	Rabbit Cage
 -	Paper Bag
 -	Captain’s Chair
--	Purple Haze
+-	
 -	Drinking Glass
--	Rusty Nail
+-	Mug
 
 ## Possible Game Map Locations (Flushed out during storyboarding)
 
