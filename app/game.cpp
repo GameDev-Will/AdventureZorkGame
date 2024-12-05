@@ -289,8 +289,12 @@ int main()
     Asset keychain("Keychain", "A cool souvenir, you can carry a reminder of your trip with you.", 8, false);
     Asset scarf("Scarf", "Nice find! This souvenir is one you can wear for years.", 25, false);
     Asset drinkingwater("Drinking water", "This may keep you from going thirsty.", 5, false);
-    Asset picture("Picture", "A great picture to remember this by", 9, false);
-    Asset snack("Snack", "A snake is great for when you get hungry", 12, false);
+    Asset picture("Picture", "A great picture to remember this by.", 9, false);
+    Asset snack("Snack", "A snake is great for when you get hungry.", 12, false);
+    Asset hammer("Hammer", "this is a good weapon to have when faced with monsters.", 15, true);
+    Asset gun("Gun", "Weapon for battling monsters.", 20, true);
+    Asset knife("Knife", "Great for taking down opponents.", 30, true);
+    Asset bat("Bat", "Weapon for monsters looking for a beating", 15, true);
 
     // randomly add assets to nodes
     int numOfNodes = gameMap.size();
@@ -317,28 +321,43 @@ int main()
     randNode = rand() % numOfNodes;
     gameMap[randNode].AddAsset(&snack);
 
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&hammer);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&gun);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&knife);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&bat);
+
     // build monsters
     // randomly add monsters to nodes
-    Monster ghoul("ghoul", 5000, 100);
-    Monster goblin("goblin", 6000, 100);
-    Monster kraken("kraken", 7000, 100);
-    Monster demon("demon", 5000, 100);
-    Monster griffin("griffin", 4000, 100);
+    Monster ness("Loch Ness", 5000, 100);
+    Monster altie("Altie Sea Monster", 6000, 100);
+    Monster whitelady("White Lady", 7000, 100);
+    Monster squonk("Squonk", 5000, 100);
+    Monster lizardman("Lizard Man", 4000, 100);
+    Monster wampuscat("Wampus Cat", 5000, 100);
 
-    randNode = rand() % numOfNodes;
-    gameMap[randNode].AddMonster(&ghoul);
+    //randNode = rand() % numOfNodes;
+    gameMap[california].AddMonster(&ness);
 
-    randNode = rand() % numOfNodes;
-    gameMap[randNode].AddMonster(&goblin);
+    //randNode = rand() % numOfNodes;
+    gameMap[georgia].AddMonster(&altie);
 
-    randNode = rand() % numOfNodes;
-    gameMap[randNode].AddMonster(&kraken);
+    //randNode = rand() % numOfNodes;
+    gameMap[newYork].AddMonster(&whitelady);
 
-    randNode = rand() % numOfNodes;
-    gameMap[randNode].AddMonster(&demon);
+    //randNode = rand() % numOfNodes;
+    gameMap[pennsylvania].AddMonster(&squonk);
 
-    randNode = rand() % numOfNodes;
-    gameMap[randNode].AddMonster(&griffin);
+    //randNode = rand() % numOfNodes;
+    gameMap[southCarolina].AddMonster(&lizardman);
+
+    gameMap[northCarolina].AddMonster(&wampuscat);
 
     // get ready to play game below
     int nodePointer = 0; // start at home
