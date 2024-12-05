@@ -6,10 +6,10 @@ Chanticleer's Adventure Game is a single player text-based adventure game. The o
 
 ## Game parameters are:
 
--	Player starts with budget worth 12,500 points
+-	Player starts with health worth 12,500 points
 -	Player will have a certain amount of time to travel to as many locations as possible.
 -	Player gain or lose points depending on the souvenirs they get and monsters faced during the game
--	Player loses the game if she runs out of points or time
+-	Player loses the game if they run out of points or time
 
 ## Game objects of interest:
 
@@ -23,8 +23,8 @@ Chanticleer's Adventure Game is a single player text-based adventure game. The o
 
 ## List of actions (use: verb + noun) examples:
 
--	Walk, Take, Drop
--	Inventory (used to show list of souvenirs a player holds)
+-	Walk, Take, Drop, Inspect, Attack
+-	Inventory (used to show list of items a player holds)
 
 ## Game Objects
 
@@ -42,7 +42,6 @@ Chanticleer's Adventure Game is a single player text-based adventure game. The o
 -	Gun
 -	Knife
 -	Bat
--	Sword
 
 ## Possible Game Map Locations (Flushed out during storyboarding)
 
