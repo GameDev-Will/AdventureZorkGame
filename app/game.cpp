@@ -313,6 +313,10 @@ int main()
     Asset drinkingwater("Drinking water", "This may keep you from going thirsty.", 5, false);
     Asset picture("Picture", "A great picture to remember this by", 9, false);
     Asset snack("Snack", "A snake is great for when you get hungry", 12, false);
+    Asset hammer("Hammer", "this is a good weapon to have when faced with monsters.", 500, true);
+    Asset gun("Gun", "Weapon for battling monsters.", 1000, true);
+    Asset knife("Knife", "Great for taking down opponents.", 500, true);
+    Asset bat("Bat", "Weapon for monsters looking for a beating", 300, true);
 
     // randomly add assets to nodes
     int numOfNodes = gameMap.size();
