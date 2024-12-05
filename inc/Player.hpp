@@ -18,5 +18,6 @@ namespace chants
         Player(string name, int health, int fightCoefficient);
         void AddAsset(Asset asset);
         int GetTotalAssetValue();
+        vector<Asset> GetOffensiveAssets();  
     };
 }

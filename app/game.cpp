@@ -63,12 +63,45 @@ int FindNode(string loc, vector<Node> *gameMap)
     return -1;
 }
 
-int Battle(Player player, Monster monster)
+int Battle(Player &player, Monster &monster, vector<Asset> &offensiveAssets)
 {
     cout << "You've encountered " << monster.GetName() << "!\n";
+
+    //let player choose to use an offensive asset
+    cout << "Do you want to use an asset to attack? (y/n): ";
+    char useAsset;
+    cin >> useAsset;
+
     while (player.GetHealth() > 0 && monster.GetHealth() > 0)
     {
         int playerDamage = player.Fight();
+
+        if (useAsset == 'y' || useAsset == 'Y')
+        {
+            if (!offensiveAssets.empty())
+            {
+                cout << "Select an offensive asset to use:\n";
+                for (size_t i = 0; i < offensiveAssets.size(); i++)
+                {
+                    cout << i + 1 << : << offensiveAssets[i].GetName() << "(Damage: " << offensiveAssets[i].GetValue() << ")\n";
+                }
+                size_t choice;
+                cin >> choice;
+                if (choice > 0 && choice <= offensiveAssets.size())
+                {
+                    damage += offensiveAssets[choice - 1].GetValue();
+                    cout << "Using " << offensiveAssets[choice - 1].GetName() << " for extra damage.\n";
+                    //remove asset (single use)
+                    //offensiveAssets.erase(offensiveAssets.begin() + choice - 1);
+                }
+            }
+            else
+            {
+                cout << "No offensive assets available.\n";
+            }
+            useAsset = 'n'; //reset to avoid repeating prompt
+        }
+
         monster.ReduceHealth(playerDamage);
         cout << "You attack " << monster.GetName() << " dealing " << playerDamage << " damage.\n" << endl;
 
@@ -440,11 +473,19 @@ int main()
             }
             else if (input[0] == 'a')
             {
+                vector<Asset> offensiveAssets = player.GetOffensiveAssets();
+                for (auto &asset : player.GetAssets())
+                {
+                    if (asset.isOffensive())
+                    {
+                        offensiveAssets.push_back(asset);
+                    }
+                }
                 for (auto &monster : gameMap[nodePointer].GetMonsters())
                 {
                     if (monster->GetName() == lastWord)
                     {
-                        Battle(player, *monster);
+                        int result = Battle(player, *monster, offensiveAssets);
                         break;
                     }
                 }

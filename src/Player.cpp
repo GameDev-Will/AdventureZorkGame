@@ -21,4 +21,17 @@ namespace chants
         }
         return val;
     }
+
+    vector<Asset> Player::GetOffensiveAssets()
+    {
+        vector<Asset> offensive;
+        for (auto &asset : _assets)
+        {
+            if (asset.isOffensive() && !asset.hasBeenUsed)
+            {
+                offensive.push_back(asset);
+            }
+        }
+        return offensive;
+    }
 }
