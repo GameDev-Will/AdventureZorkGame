@@ -343,6 +343,18 @@ int main()
     randNode = rand() % numOfNodes;
     gameMap[randNode].AddAsset(&snack);
 
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&hammer);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&gun);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&knife);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&bat);
+
     // build monsters
     // randomly add monsters to nodes
     Monster ness("Loch Ness", 5000, 100);
