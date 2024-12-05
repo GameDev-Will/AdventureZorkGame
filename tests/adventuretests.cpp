@@ -30,6 +30,8 @@
     ASSERT_EQ(8, 8);
 }
 */
+//Asset Tests
+//testing the constructor and getters
 TEST(AssetTest, ConstructandGet) {
     chants::Asset magnet("Magnet", "A nice souvenir to put on the fridge at home.", 15, false);
 
@@ -38,7 +40,7 @@ TEST(AssetTest, ConstructandGet) {
     EXPECT_EQ(magnet.GetValue(), 15);
     EXPECT_FALSE(magnet.isOffensive());
 }
-
+//testing for if the asset is offensive or not.
 TEST(AssetTest, OffensiveAsset) 
 {
     chants::Asset hammer("Hammer", "A hammer to help defend yourself", 150, true);
@@ -48,9 +50,18 @@ TEST(AssetTest, OffensiveAsset)
     EXPECT_EQ(hammer.GetMessage(), "A hammer to help defend yourself");
     EXPECT_EQ(hammer.GetValue(), 150);
 }
-
+//testing if the asset has been used or not. 
 TEST(AssetTest, hasBeenUsed){
     chants::Asset drinkingwater("Drinking Water", "This may keep you from going thirsty.", 100, false);
 
     EXPECT_FALSE(drinkingwater.hasBeenUsed);
+}
+
+//Monster tests
+//testing for initialization of monster name and health
+TEST(MonsterTest, InitializeMonster){
+    chants:: Monster monster("White Lady", 7000, 100);
+
+    EXPECT_EQ(monster.GetName(), "White Lady");
+    EXPECT_EQ(monster.GetHealth(), 7000);
 }
