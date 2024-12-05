@@ -75,7 +75,7 @@ int Battle(Player player, Monster monster)
         if (monster.GetHealth() <= 0)
         {
             cout << monster.GetName() << " is defeated!\n";
-            break;
+            return 1;  //player wins
         }
 
         int monsterDamage = monster.Fight();
@@ -85,7 +85,7 @@ int Battle(Player player, Monster monster)
         if (player.GetHealth() <= 0)
         {
             cout << "You have been defeated by " << monster.GetName() << "!\n";
-            break;
+            return -1;  //monster wins
         }
     }
 

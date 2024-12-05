@@ -21,6 +21,15 @@ namespace chants
         return _health;
     }
 
+     void Combatant::ReduceHealth(int damage)
+    {
+        _health -= damage;
+        if (_health < 0)
+        {
+            _health = 0;     //ensuring health does not go below zero
+        }
+    }
+
     /// @brief Average fight value over several interations
     /// @return
     int Combatant::Fight()
@@ -34,4 +43,6 @@ namespace chants
         float Total = subTotal / _fightCoefficient;
         return (int)Total;
     }
+
+    
 }
