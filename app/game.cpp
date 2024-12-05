@@ -342,22 +342,23 @@ int main()
     Monster lizardman("Lizard Man", 4000, 100);
     Monster wampuscat("Wampus Cat", 5000, 100);
 
-    //randNode = rand() % numOfNodes;
-    gameMap[california].AddMonster(&ness);
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddMonster(&ness);
 
-    //randNode = rand() % numOfNodes;
-    gameMap[georgia].AddMonster(&altie);
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddMonster(&altie);
 
-    //randNode = rand() % numOfNodes;
-    gameMap[newYork].AddMonster(&whitelady);
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddMonster(&whitelady);
 
-    //randNode = rand() % numOfNodes;
-    gameMap[pennsylvania].AddMonster(&squonk);
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddMonster(&squonk);
 
-    //randNode = rand() % numOfNodes;
-    gameMap[southCarolina].AddMonster(&lizardman);
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddMonster(&lizardman);
 
-    gameMap[northCarolina].AddMonster(&wampuscat);
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddMonster(&wampuscat);
 
     // get ready to play game below
     int nodePointer = 0; // start at home
