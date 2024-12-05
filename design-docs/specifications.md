@@ -2,7 +2,7 @@
 
 ## Game Description
 
-Chanticleer's Adventure Game is a single player text-based adventure game. The object of the game is to rescue the Bird of Thule, which was captured by Hobgoblins (trolls) of Benightedness (ignorance). The player moves through the game by issuing text commands such as west, take hammer, or drop staff. After each movement, the game will respond by telling the player where she is currently located by describing her surroundings. Each location may have several paths in any number of directions. Each location may contain objects of interest with clues to where the Bird of Happiness might be located and/or danger from lurking Hobgoblins and hired Specters (ghosts). Along the way, the player can pick up items that will help fight enemies, unlock clues, and find the Bird of Thule. The game can be saved and opened at the same location and game parameters.
+Chanticleer's Adventure Game is a single player text-based adventure game. The object of the game is to visit as many tourest locations as possible from each state. The player moves through the game by issuing text commands such as west, take kaychain, drop scarf. After each movement, the game will respond by telling the player where they are currently located by describing their surroundings. Each location may have several paths in any number of directions. Each location may contain objects of interest with clues to where the Bird of Happiness might be located and/or danger from lurking Hobgoblins and hired Specters (ghosts). Along the way, the player can pick up items that will help fight enemies, unlock clues, and find the Bird of Thule. The game can be saved and opened at the same location and game parameters.
 
 ## Game parameters are:
 

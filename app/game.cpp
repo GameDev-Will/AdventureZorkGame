@@ -283,27 +283,28 @@ int main()
 
     // // build assets
     // //
-    Asset flashlight("Flashlight", "A flashlight can be very useful, especially in dark places.", 50, false);
-    Asset hammer("Hammer", "A hammer to help defend yourself", 150, true);
-    Asset purplehaze("Purple haze", "A spell that renders opponents helpless.", 250, true);
-    Asset rustynail("Rusty nail", "Infect an opponent with tetanus.", 100, true);
-    Asset drinkingwater("Drinking water", "This may keep you from going thirsty.", 50, false);
+    // These assets are in the form of souvenirs that the player can buy with their points
+    Asset magnet("Magnet", "A nice souvenir to put on the fridge at home.", 8, false);
+    Asset mug("Mug", "A nice souvenir, you can use it to hold your coffee/tea.", 12, false);
+    Asset keychain("Keychain", "A cool souvenir, you can carry a reminder of your trip with you.", 8, false);
+    Asset scarf("Scarf", "Nice find! This souvenir is one you can wear for years.", 25, false);
+    Asset drinkingwater("Drinking water", "This may keep you from going thirsty.", 5, false);
 
     // randomly add assets to nodes
     int numOfNodes = gameMap.size();
 
     srand(time(nullptr)); // seed the random number generator
     int randNode = rand() % numOfNodes;
-    gameMap[randNode].AddAsset(&flashlight);
+    gameMap[randNode].AddAsset(&magnet);
 
     randNode = rand() % numOfNodes;
-    gameMap[randNode].AddAsset(&hammer);
+    gameMap[randNode].AddAsset(&mug);
 
     randNode = rand() % numOfNodes;
-    gameMap[randNode].AddAsset(&purplehaze);
+    gameMap[randNode].AddAsset(&keychain);
 
     randNode = rand() % numOfNodes;
-    gameMap[randNode].AddAsset(&rustynail);
+    gameMap[randNode].AddAsset(&scarf);
 
     randNode = rand() % numOfNodes;
     gameMap[randNode].AddAsset(&drinkingwater);
