@@ -65,7 +65,29 @@ int FindNode(string loc, vector<Node> *gameMap)
 
 int Battle(Player player, Monster monster)
 {
-    srand(time(nullptr));
+    cout << "You've encountered " << monster.GetName() << "!\n";
+    while (player.GetHealth() > 0 && monster.GetHealth() > 0)
+    {
+        int playerDamage = player.Fight();
+        monster.ReduceHealth(playerDamage);
+        cout << "You attack " << monster.GetName() << " dealing " << playerDamage << " damage.\n" << endl;
+
+        if (monster.GetHealth() <= 0)
+        {
+            cout << monster.GetName() << " is defeated!\n";
+            break;
+        }
+
+        int monsterDamage = monster.Fight();
+        player.ReduceHealth(monsterDamage);
+        cout << monster.GetName() << " hits back, dealing " << monsterDamage << " damage.\n";
+
+        if (player.GetHealth() <= 0)
+        {
+            cout << "You have been defeated by " << monster.GetName() << "!\n";
+            break;
+        }
+    }
 
     return player.GetHealth();
 }
@@ -345,6 +367,7 @@ int main()
     gameMap[randNode].AddMonster(&wampuscat);
 
     // get ready to play game below
+    Player player("Player", 12500, 100);
     int nodePointer = 0; // start at home
     string input;
 
@@ -354,7 +377,7 @@ int main()
         // show current node info
         AtNode(gameMap[nodePointer]);
 
-        cout << "Go to node? e(x)it: ";
+        cout << "Enter command ('t' to take, 'd' to drop, 'i' to inspect assets; 'a' to attack monsters; or go to node? e(x)it: ";
         getline(cin, input);
 
         // exit app?
@@ -383,36 +406,70 @@ int main()
         }
 
         // if player wants to take an asset (t hammer)
-        if (input.length() > 1 && input[0] == 't')
+        if (input.length() > 1)
         {
-            string lastWord = getLastWord(input);
-        }
+            string lastWord = getLastWord(input.substr(2));
+            if (input[0] == 't')
+            {
+                for (auto &asset : gameMap[nodePointer].GetAssets())
+                {
+                    if (asset->GetName() == lastWord)
+                    {
+                        player.AddAsset(*asset);
+                        gameMap[nodePointer].RemoveAsset(asset);
+                        cout << "Taken" << lastWord << "." << endl;
+                        break;
+                    }
+                }
+            }
+            else if (input[0] == 'a')
+            {
+                for (auto &monster : gameMap[nodePointer].GetMonsters())
+                {
+                    if (monster->GetName() == lastWord)
+                    {
+                        Battle(player, *monster);
+                        break;
+                    }
+                }
+            }
+            else if (input[0] == 'd')
+            {
+                Asset *asset = player.RemoveAsset(lastWord);
+                if (asset)
+                {
+                    gameMap[nodePointer].AddAsset(asset);
+                    cout << "Dropped " << lastWord << "." << endl;
+                }
+            }
+            else if (input[0] == 'i')
+            {
+                for (auto &asset : gameMap[nodePointer].GetAssets())
+                {
+                    if (asset->GetName() == lastWord)
+                    {
+                        cout << "Inspecting " << asset->GetMessage() << endl;
+                        break;
+                    }
+                }
+            }
 
-        // if player wants to attack a monster (a kraken)
-        if (input.length() > 1 && input[0] == 'a')
-        {
-            string lastWord = getLastWord(input);
+            
         }
-
-        // if player wants to drop an asset (d hammer)
-        if (input.length() > 1 && input[0] == 'd')
-        {
-            string lastWord = getLastWord(input);
-        }
-
-        // if player wants to inspect an asset (i hammer)
-        if (input.length() > 1 && input[0] == 'i')
-        {
-            string lastWord = getLastWord(input);
-        }
-
-        cout << "Dir: " << dir << endl;
-        if (dir >= 0)
-            nodePointer = dir;
         else
-            cout << "Not a valid node address\n";
+        {
+            cout << "Dir: " << dir << endl;
+            if (dir >= 0)
+                nodePointer = dir;
+            else
+                cout << "Not a valid node address\n";
 
-        cout << endl;
+            cout << endl;
+
+        }
+
+
+        
     }
     return 0;
 }
