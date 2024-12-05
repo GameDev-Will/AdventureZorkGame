@@ -339,13 +339,13 @@ int main()
     // // build assets
     // //
     // These assets are in the form of souvenirs that the player can buy with their points
-    Asset magnet("Magnet", "A nice souvenir to put on the fridge at home.", 8, false);
-    Asset mug("Mug", "A nice souvenir, you can use it to hold your coffee/tea.", 12, false);
+    Asset magnet("Magnet", "A nice souvenir to put on the fridge at home.", 20, false);
+    Asset mug("Mug", "A nice souvenir, you can use it to hold your coffee/tea.", 25, false);
     Asset keychain("Keychain", "A cool souvenir, you can carry a reminder of your trip with you.", 8, false);
-    Asset scarf("Scarf", "Nice find! This souvenir is one you can wear for years.", 25, false);
-    Asset drinkingwater("Drinking water", "This may keep you from going thirsty.", 5, false);
-    Asset picture("Picture", "A great picture to remember this by", 9, false);
-    Asset snack("Snack", "A snake is great for when you get hungry", 12, false);
+    Asset scarf("Scarf", "Nice find! This souvenir is one you can wear for years.", 50, false);
+    Asset drinkingwater("Drinking water", "This may keep you from going thirsty.", 80, false);
+    Asset picture("Picture", "A great picture to remember this by", 20, false);
+    Asset snack("Snack", "A snake is great for when you get hungry", 100, false);
     Asset hammer("Hammer", "this is a good weapon to have when faced with monsters.", 500, true);
     Asset gun("Gun", "Weapon for battling monsters.", 1000, true);
     Asset knife("Knife", "Great for taking down opponents.", 500, true);
