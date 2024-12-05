@@ -30,13 +30,21 @@
     ASSERT_EQ(8, 8);
 }
 */
-TEST(AssetTest, AddAssetToNode) {
-    chants::Node node(0, "Home");
-    chants::Asset flashlight("Flashlight", "A tool to see in the dark.", 50, false);
+TEST(AssetTest, ConstructandGet) {
+    chants::Asset flashlight("Flashlight", "A flashlight can be very useful, especially in dark places", 50, false);
 
-    node.AddAsset(&flashlight);
+    EXPECT_EQ(flashlight.GetName(), "Flashlight");
+    EXPECT_EQ(flashlight.GetMessage(), "A flashlight can be very useful, especially in dark places");
+    EXPECT_EQ(flashlight.GetValue(), 50);
+    EXPECT_FALSE(flashlight.isOffensive());
+}
 
-    EXPECT_EQ(node.GetAssets().size(), 1);
-    EXPECT_EQ(node.GetAssets()[0], &flashlight);
-    
+TEST(AssetTest, OffensiveAsset) 
+{
+    chants::Asset hammer("Hammer", "A hammer to help defend yourself", 150, true);
+
+    EXPECT_TRUE(hammer.isOffensive());
+    EXPECT_EQ(hammer.GetName(), "Hammer");
+    EXPECT_EQ(hammer.GetMessage(), "A hammer to help defend yourself");
+    EXPECT_EQ(hammer.GetValue(), 150);
 }
