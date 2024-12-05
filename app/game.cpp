@@ -289,6 +289,8 @@ int main()
     Asset keychain("Keychain", "A cool souvenir, you can carry a reminder of your trip with you.", 8, false);
     Asset scarf("Scarf", "Nice find! This souvenir is one you can wear for years.", 25, false);
     Asset drinkingwater("Drinking water", "This may keep you from going thirsty.", 5, false);
+    Asset picture("Picture", "A great picture to remember this by", 9, false);
+    Asset snack("Snack", "A snake is great for when you get hungry", 12, false);
 
     // randomly add assets to nodes
     int numOfNodes = gameMap.size();
@@ -308,6 +310,12 @@ int main()
 
     randNode = rand() % numOfNodes;
     gameMap[randNode].AddAsset(&drinkingwater);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&picture);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&snack);
 
     // build monsters
     // randomly add monsters to nodes
