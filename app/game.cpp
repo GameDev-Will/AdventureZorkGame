@@ -319,26 +319,29 @@ int main()
 
     // build monsters
     // randomly add monsters to nodes
-    Monster ghoul("ghoul", 5000, 100);
-    Monster goblin("goblin", 6000, 100);
-    Monster kraken("kraken", 7000, 100);
-    Monster demon("demon", 5000, 100);
-    Monster griffin("griffin", 4000, 100);
+    Monster ness("Loch Ness", 5000, 100);
+    Monster altie("Altie Sea Monster", 6000, 100);
+    Monster whitelady("White Lady", 7000, 100);
+    Monster squonk("Squonk", 5000, 100);
+    Monster lizardman("Lizard Man", 4000, 100);
+    Monster wampuscat("Wampus Cat", 5000, 100);
 
-    randNode = rand() % numOfNodes;
-    gameMap[randNode].AddMonster(&ghoul);
+    //randNode = rand() % numOfNodes;
+    gameMap[california].AddMonster(&ness);
 
-    randNode = rand() % numOfNodes;
-    gameMap[randNode].AddMonster(&goblin);
+    //randNode = rand() % numOfNodes;
+    gameMap[georgia].AddMonster(&altie);
 
-    randNode = rand() % numOfNodes;
-    gameMap[randNode].AddMonster(&kraken);
+    //randNode = rand() % numOfNodes;
+    gameMap[newYork].AddMonster(&whitelady);
 
-    randNode = rand() % numOfNodes;
-    gameMap[randNode].AddMonster(&demon);
+    //randNode = rand() % numOfNodes;
+    gameMap[pennsylvania].AddMonster(&squonk);
 
-    randNode = rand() % numOfNodes;
-    gameMap[randNode].AddMonster(&griffin);
+    //randNode = rand() % numOfNodes;
+    gameMap[southCarolina].AddMonster(&lizardman);
+
+    gameMap[northCarolina].AddMonster(&wampuscat);
 
     // get ready to play game below
     int nodePointer = 0; // start at home
