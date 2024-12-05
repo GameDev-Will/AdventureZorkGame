@@ -31,12 +31,12 @@
 }
 */
 TEST(AssetTest, ConstructandGet) {
-    chants::Asset flashlight("Flashlight", "A flashlight can be very useful, especially in dark places", 50, false);
+    chants::Asset magnet("Magnet", "A nice souvenir to put on the fridge at home.", 15, false);
 
-    EXPECT_EQ(flashlight.GetName(), "Flashlight");
-    EXPECT_EQ(flashlight.GetMessage(), "A flashlight can be very useful, especially in dark places");
-    EXPECT_EQ(flashlight.GetValue(), 50);
-    EXPECT_FALSE(flashlight.isOffensive());
+    EXPECT_EQ(magnet.GetName(), "Magnet");
+    EXPECT_EQ(magnet.GetMessage(), "A nice souvenir to put on the fridge at home.");
+    EXPECT_EQ(magnet.GetValue(), 15);
+    EXPECT_FALSE(magnet.isOffensive());
 }
 
 TEST(AssetTest, OffensiveAsset) 
@@ -47,4 +47,10 @@ TEST(AssetTest, OffensiveAsset)
     EXPECT_EQ(hammer.GetName(), "Hammer");
     EXPECT_EQ(hammer.GetMessage(), "A hammer to help defend yourself");
     EXPECT_EQ(hammer.GetValue(), 150);
+}
+
+TEST(AssetTest, hasBeenUsed){
+    chants::Asset drinkingwater("Drinking Water", "This may keep you from going thirsty.", 100, false);
+
+    EXPECT_FALSE(drinkingwater.hasBeenUsed);
 }
