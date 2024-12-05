@@ -12,6 +12,7 @@
 #include <vector>
 
 #include <Node.hpp>
+#include <Asset.hpp>
 #include <AdventureGameMap.hpp>
 #include <Player.hpp>
 #include <Combatant.hpp>
@@ -24,7 +25,18 @@
  *      In this case, a card is created at the lowest valid suit integer
  *      and the highest valid value integer. Suit 1, Value 1
  */
-TEST(NodeTest, ValidNode)
+/*TEST(NodeTest, ValidNode)
 {
-    ASSERT_EQ(5, 5);
+    ASSERT_EQ(8, 8);
+}
+*/
+TEST(AssetTest, AddAssetToNode) {
+    chants::Node node(0, "Home");
+    chants::Asset flashlight("Flashlight", "A tool to see in the dark.", 50, false);
+
+    node.AddAsset(&flashlight);
+
+    EXPECT_EQ(node.GetAssets().size(), 1);
+    EXPECT_EQ(node.GetAssets()[0], &flashlight);
+    
 }
