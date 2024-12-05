@@ -6,7 +6,7 @@ Chanticleer's Adventure Game is a single player text-based adventure game. The o
 
 ## Game parameters are:
 
--	Player starts with budget worth 12,500 points
+-	Player starts with budget worth 2,500 points
 -	Player will have a certain amount of time to travel to as many locations as possible.
 -	Player gain or lose points depending on the souvenirs they get during the game
 -	Player loses the game if she runs out of points or time
@@ -14,7 +14,6 @@ Chanticleer's Adventure Game is a single player text-based adventure game. The o
 ## Game objects of interest:
 
 -	Golden Trophy – collect the trophy in order to win 
--	Hobgoblins – run the city of Benightedness
 -	Player – Chants Adventure is a single player game
 -	United States of America - world
 -	Path – all paths are bi-directional
@@ -34,20 +33,17 @@ Chanticleer's Adventure Game is a single player text-based adventure game. The o
 ## Possible list of objects;
 -	Magnet
 -	Scarf
--	
--	
--	 
--	
--	
--	
--	
--	
--	
--	
--	
--	Golden Trophy
+-	Keychain
+-	Picture
+-	Mug 
 -	Drinking Glass
--	Mug
+-	Snack
+-	Golden Trophy
+-	
+-	
+-	
+-	
+-	
 
 ## Possible Game Map Locations (Flushed out during storyboarding)
 
