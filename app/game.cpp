@@ -20,7 +20,7 @@ bool isNumber(const string &str)
     return true;
 }
 
-void getValidIntegerInput(const string& prompt)
+int getValidIntegerInput(const string& prompt)
 {
     int value;
     while (true)
@@ -86,31 +86,42 @@ int FindNode(string loc, vector<Node> *gameMap)
 int Battle(Player &player, Monster &monster, vector<Asset> &offensiveAssets)
 {
     cout << "You've encountered " << monster.GetName() << "!\n";
+    char useAsset = 'n';
+    int playerDamage = 0;
 
     while (player.GetHealth() > 0 && monster.GetHealth() > 0)
     {
         cout << "Player Health: " << player.GetHealth() << ", Monster Health: " << monster.GetHealth() << "\n";
+        playerDamage = player.Fight();
 
+        cout << "Do you want to use an offensive asset? (y/n): ";
+        cin >> useAsset;
         //player attack phase
-        if (!offensiveAssets.empty())
+        if (tolower(useAsset) == 'y')
         {
-            cout << "You can use one of the following offensive assets:\n";
-            for (size_t i = 0; i < offensiveAssets.size(); i++)
+            if (!offensiveAssets.empty())
             {
-                cout << i + 1 << ": " << offensiveAssets[i].GetName() << "(Damage: " << offensiveAssets[i].GetValue() << ")\n";
-            }
+                cout << "You can use one of the following offensive assets:\n";
+                for (size_t i = 0; i < offensiveAssets.size(); i++)
+                {
+                    cout << i + 1 << ": " << offensiveAssets[i].GetName() << "(Damage: " << offensiveAssets[i].GetValue() << ")\n";
+                }
 
-            int choice = getValidIntegerInput("Select an offensive asset to use (or 0 to skip): ") - 1;
-            if (choice > 0 && choice <= offensiveAssets.size())
+                int choice = getValidIntegerInput("Select an offensive asset to use (or 0 to skip): ") - 1;
+                if (choice > 0 && choice <= offensiveAssets.size())
+                {
+                    playerDamage += offensiveAssets[choice].GetValue();
+                    cout << "Using " << offensiveAssets[choice].GetName() << " for extra damage.\n";
+                    //remove asset (single use)
+                    offensiveAssets.erase(offensiveAssets.begin() + choice);
+                }
+            }
+            else
             {
-                playerDamage += offensiveAssets[choice].GetValue();
-                cout << "Using " << offensiveAssets[choice].GetName() << " for extra damage.\n";
-                //remove asset (single use)
-                offensiveAssets.erase(offensiveAssets.begin() + choice);
+                cout << "No offensive assets available.\n";
             }
         }
-
-        int playerDamage = player.Fight(); 
+         
         monster.ReduceHealth(playerDamage);
         cout << "You attack " << monster.GetName() << " dealing " << playerDamage << " damage.\n" << endl;
 
