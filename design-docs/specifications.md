@@ -30,23 +30,17 @@ Chanticleer's Adventure Game is a single player text-based adventure game. The o
 	Game objects all have a value in points. Also, not all game objects can be picked up by the player. Some may offer only clues; for example, on how to find the BOK. Some objects can be taken by the player but other may not be picked up. The player may pick up an object and drop it at another location in the game.
 
 ## Possible list of objects;
--	Flashlight
--	Atomic Map
--	Compass
--	Screwdriver
--	Hammer
--	Polyglot (translator)
--	Treasure
--	Hobgoblin Shield
--	Garden Hose
--	Chest
--	Sign
--	Rabbit Cage
--	Paper Bag
--	Captain’s Chair
--	Purple Haze
+-	Magnet
+-	Scarf
+-	Keychain
+-	Picture
+-	Mug 
 -	Drinking Glass
--	Rusty Nail
+-	Snack
+-	Hammer
+-	Gun
+-	Knife
+-	Bat
 
 ## Possible Game Map Locations (Flushed out during storyboarding)
 
