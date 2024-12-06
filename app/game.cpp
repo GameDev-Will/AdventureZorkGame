@@ -20,6 +20,26 @@ bool isNumber(const string &str)
     return true;
 }
 
+void getValidIntegerInput(const string& prompt)
+{
+    int value;
+    while (true)
+    {
+        cout << prompt;
+        if (cin >> value)
+        {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); //clear the buffer
+            return value;
+        }
+        else
+        {
+            cout << "Invalid input. Please enter a valid integer.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    }
+}
+
 void AtNode(Node &viewPort)
 {
     cout << "\033[2J\033[1;1H"; // clear screen
@@ -67,41 +87,30 @@ int Battle(Player &player, Monster &monster, vector<Asset> &offensiveAssets)
 {
     cout << "You've encountered " << monster.GetName() << "!\n";
 
-    //let player choose to use an offensive asset
-    cout << "Do you want to use an asset to attack? (y/n): ";
-    char useAsset;
-    cin >> useAsset;
-
     while (player.GetHealth() > 0 && monster.GetHealth() > 0)
     {
-        int playerDamage = player.Fight();
+        cout << "Player Health: " << player.GetHealth() << ", Monster Health: " << monster.GetHealth() << "\n";
 
-        if (useAsset == 'y' || useAsset == 'Y')
+        //player attack phase
+        if (!offensiveAssets.empty())
         {
-            if (!offensiveAssets.empty())
+            cout << "You can use one of the following offensive assets:\n";
+            for (size_t i = 0; i < offensiveAssets.size(); i++)
             {
-                cout << "Select an offensive asset to use:\n";
-                for (size_t i = 0; i < offensiveAssets.size(); i++)
-                {
-                    cout << i + 1 << : << offensiveAssets[i].GetName() << "(Damage: " << offensiveAssets[i].GetValue() << ")\n";
-                }
-                size_t choice;
-                cin >> choice;
-                if (choice > 0 && choice <= offensiveAssets.size())
-                {
-                    damage += offensiveAssets[choice - 1].GetValue();
-                    cout << "Using " << offensiveAssets[choice - 1].GetName() << " for extra damage.\n";
-                    //remove asset (single use)
-                    offensiveAssets.erase(offensiveAssets.begin() + choice - 1);
-                }
+                cout << i + 1 << ": " << offensiveAssets[i].GetName() << "(Damage: " << offensiveAssets[i].GetValue() << ")\n";
             }
-            else
+
+            int choice = getValidIntegerInput("Select an offensive asset to use (or 0 to skip): ") - 1;
+            if (choice > 0 && choice <= offensiveAssets.size())
             {
-                cout << "No offensive assets available.\n";
+                playerDamage += offensiveAssets[choice].GetValue();
+                cout << "Using " << offensiveAssets[choice].GetName() << " for extra damage.\n";
+                //remove asset (single use)
+                offensiveAssets.erase(offensiveAssets.begin() + choice);
             }
-            useAsset = 'n'; //reset to avoid repeating prompt
         }
 
+        int playerDamage = player.Fight(); 
         monster.ReduceHealth(playerDamage);
         cout << "You attack " << monster.GetName() << " dealing " << playerDamage << " damage.\n" << endl;
 
@@ -111,6 +120,7 @@ int Battle(Player &player, Monster &monster, vector<Asset> &offensiveAssets)
             return 1;  //player wins
         }
 
+        //monster counter-attack phase
         int monsterDamage = monster.Fight();
         player.ReduceHealth(monsterDamage);
         cout << monster.GetName() << " hits back, dealing " << monsterDamage << " damage.\n";
@@ -154,7 +164,7 @@ int main()
 
     //vector<AdventureGameMap> gameMap;
 
-
+    srand(time(nullptr)); //seed random number generator once
     vector<Node> gameMap;
 
     // //     // build all nodes
@@ -354,7 +364,6 @@ int main()
     // randomly add assets to nodes
     int numOfNodes = gameMap.size();
 
-    srand(time(nullptr)); // seed the random number generator
     int randNode = rand() % numOfNodes;
     gameMap[randNode].AddAsset(&magnet);
 
