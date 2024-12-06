@@ -2,7 +2,7 @@
 
 ## Game Description
 
-Chanticleer's Adventure Game is a single player text-based adventure game. The object of the game is to visit as many states as possible and visit their respective monuments and tourist spots. The player moves through the game by issuing text commands such as west, take keychain, drop mug. After each movement, the game will respond by telling the player where they are currently located by describing their surroundings. Each location may have several paths in any number of directions. Each location may contain objects that will help you defeat monsters and souvenirs that the player can collect to remember their trip. The game can be saved and opened at the same location and game parameters.
+Chanticleer's Adventure Game is a single player text-based adventure game. The object of the game is to visit as many states as possible and visit their respective monuments and tourist spots. The player moves through the game by issuing text commands such as west, take keychain, or drop mug. After each movement, the game will respond by telling the player where they are currently located by describing their surroundings. Each location may have several paths in any number of directions. Each location may contain objects that will help you defeat monsters and souvenirs that the player can collect to remember their trip. The game can be saved and opened at the same location and game parameters.
 
 ## Game parameters are:
 
