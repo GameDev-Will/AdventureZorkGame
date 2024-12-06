@@ -7,25 +7,22 @@ Chanticleer's Adventure Game is a single player text-based adventure game. The o
 ## Game parameters are:
 
 -	Player starts with health worth 12,500 points
--	Player will have a certain amount of time to find the Bird of Knowledge
--	Player gain or lose points depending on the events that happen during the game
--	Player loses the game if she runs out of points or time
+-	Player will have a certain amount of time to travel to as many locations as possible.
+-	Player gain or lose points depending on the souvenirs they get and monsters faced during the game
+-	Player loses the game if they run out of points or time
 
 ## Game objects of interest:
-
--	Bird of Knowledge (BOK) – Rescue to win the game 
--	Hobgoblins – run the city of Benightedness
+ 
 -	Player – Chants Adventure is a single player game
--	Benightedness - world
+-	United States of America - world
 -	Path – all paths are bi-directional
 -	Location – points on the map
 -	Directions - node number or name
--	Objects – help or hurt the quest in finding BOH
--	Specters – hired by Hobgoblins to do their dirty work such as stealing health points
+-	Objects – help or hurt the quest during their travels
 
 ## List of actions (use: verb + noun) examples:
 
--	Walk, Take, Drop, Examine, Read, Push, Pull, Kick, Spray, Sit, Stand
+-	Walk, Take, Drop, Inspect, Attack
 -	Inventory (used to show list of items a player holds)
 
 ## Game Objects
