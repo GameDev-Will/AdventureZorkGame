@@ -12,8 +12,7 @@ Chanticleer's Adventure Game is a single player text-based adventure game. The o
 -	Player loses the game if they run out of points or time
 
 ## Game objects of interest:
-
--	Golden Trophy – collect the trophy in order to win 
+ 
 -	Player – Chants Adventure is a single player game
 -	United States of America - world
 -	Path – all paths are bi-directional
