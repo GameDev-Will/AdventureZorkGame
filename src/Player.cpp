@@ -7,7 +7,7 @@ namespace chants
     {
     }
 
-    vector<Asset *> Node::GetAssets()
+    vector<Asset *> Player::GetAssets()
     {
         return _assets;
     }
