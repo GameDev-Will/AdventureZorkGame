@@ -7,26 +7,25 @@ namespace chants
         buildMapNodes();
 
         // Possible assets:
-        // Flashlight
-        // Atomic Map
-        // Compass
-        // Screwdriver
+        // Magnet
+        // Mug
+        // Keychain
+        // Scarf
+        // Drinking Water
+        // Picture
+        // Snack
         // Hammer
-        // Polyglot (translator)
-        // Treasure
-        // Hobgoblin Shield
-        // Garden Hose
-        // Chest
-        // Sign
-        // Rabbit Cage
-        // Paper Bag
-        // Captain’s Chair
-        // Purple Haze
-        // Drinking Glass
-        // Rusty Nail
+        // Gun
+        // Knife
+        // Bat
 
         // Possible monsters:
-        //
+        //Loch Ness
+        //Altie Sea Monster
+        //The Lady in White
+        //Squonk
+        //Lizard Man
+        //Wampus Cat
     }
 
     void AdventureGameMap::buildMapNodes()
