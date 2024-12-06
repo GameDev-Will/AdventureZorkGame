@@ -88,11 +88,12 @@ int Battle(Player &player, Monster &monster, vector<Asset> &offensiveAssets)
     cout << "You've encountered " << monster.GetName() << "!\n";
     char useAsset = 'n';
     int playerDamage = 0;
+    int monsterDamage = 0;
 
     while (player.GetHealth() > 0 && monster.GetHealth() > 0)
     {
         cout << "Player Health: " << player.GetHealth() << ", Monster Health: " << monster.GetHealth() << "\n";
-        playerDamage = player.Fight();
+        playerDamage = player.Fight();  //base damage calculation
 
         cout << "Do you want to use an offensive asset? (y/n): ";
         cin >> useAsset;
@@ -132,7 +133,7 @@ int Battle(Player &player, Monster &monster, vector<Asset> &offensiveAssets)
         }
 
         //monster counter-attack phase
-        int monsterDamage = monster.Fight();
+        monsterDamage = monster.Fight();
         player.ReduceHealth(monsterDamage);
         cout << monster.GetName() << " hits back, dealing " << monsterDamage << " damage.\n";
 
