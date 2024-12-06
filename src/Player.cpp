@@ -7,6 +7,10 @@ namespace chants
     {
     }
 
+    vector<Asset *> Node::GetAssets()
+    {
+        return _assets;
+    }
     void Player::AddAsset(Asset asset)
     {
         _assets.push_back(asset);
