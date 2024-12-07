@@ -21,5 +21,8 @@ namespace chants
         string GetMessage();
         int GetValue();
         bool isOffensive();
+        bool operator==(const Asset& other) const {
+            return _name == other._name && _value == other._value;
+        }
     };
 }

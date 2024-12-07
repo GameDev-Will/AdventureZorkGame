@@ -13,6 +13,7 @@ namespace chants
 
     public:
         Combatant(string name, int health, int coefficient);
+        void ReduceHealth(int damage);
         int Fight();
         string GetName();
         int GetHealth();
