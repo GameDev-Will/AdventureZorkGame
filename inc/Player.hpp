@@ -17,6 +17,10 @@ namespace chants
     public:
         Player(string name, int health, int fightCoefficient);
         void AddAsset(Asset asset);
+        void RemoveAsset(const Asset& asset);
+        Asset* RemoveAssetByName(const string& assetName);
         int GetTotalAssetValue();
+        vector<Asset> GetOffensiveAssets();  
+        vector<Asset> GetAssets(); 
     };
 }
