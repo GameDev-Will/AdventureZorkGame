@@ -20,6 +20,26 @@ bool isNumber(const string &str)
     return true;
 }
 
+int getValidIntegerInput(const string& prompt)
+{
+    int value;
+    while (true)
+    {
+        cout << prompt;
+        if (cin >> value)
+        {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); //clear the buffer
+            return value;
+        }
+        else
+        {
+            cout << "Invalid input. Please enter a valid integer.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    }
+}
+
 void AtNode(Node &viewPort)
 {
     cout << "\033[2J\033[1;1H"; // clear screen
@@ -63,9 +83,66 @@ int FindNode(string loc, vector<Node> *gameMap)
     return -1;
 }
 
-int Battle(Player player, Monster monster)
+int Battle(Player &player, Monster &monster, vector<Asset> &offensiveAssets)
 {
-    srand(time(nullptr));
+    cout << "You've encountered " << monster.GetName() << "!\n";
+    char useAsset = 'n';
+    int playerDamage = 0;
+    int monsterDamage = 0;
+
+    while (player.GetHealth() > 0 && monster.GetHealth() > 0)
+    {
+        cout << "Player Health: " << player.GetHealth() << ", Monster Health: " << monster.GetHealth() << "\n";
+        playerDamage = player.Fight();  //base damage calculation
+
+        cout << "Do you want to use an offensive asset? (y/n): ";
+        cin >> useAsset;
+        //player attack phase
+        if (tolower(useAsset) == 'y')
+        {
+            if (!offensiveAssets.empty())
+            {
+                cout << "You can use one of the following offensive assets:\n";
+                for (size_t i = 0; i < offensiveAssets.size(); i++)
+                {
+                    cout << i + 1 << ": " << offensiveAssets[i].GetName() << "(Damage: " << offensiveAssets[i].GetValue() << ")\n";
+                }
+
+                int choice = getValidIntegerInput("Select an offensive asset to use (or 0 to skip): ") - 1;
+                if (choice > 0 && choice <= offensiveAssets.size())
+                {
+                    playerDamage += offensiveAssets[choice].GetValue();
+                    cout << "Using " << offensiveAssets[choice].GetName() << " for extra damage.\n";
+                    //remove asset (single use)
+                    offensiveAssets.erase(offensiveAssets.begin() + choice);
+                }
+            }
+            else
+            {
+                cout << "No offensive assets available.\n";
+            }
+        }
+         
+        monster.ReduceHealth(playerDamage);
+        cout << "You attack " << monster.GetName() << " dealing " << playerDamage << " damage.\n" << endl;
+
+        if (monster.GetHealth() <= 0)
+        {
+            cout << monster.GetName() << " is defeated!\n";
+            return 1;  //player wins
+        }
+
+        //monster counter-attack phase
+        monsterDamage = monster.Fight();
+        player.ReduceHealth(monsterDamage);
+        cout << monster.GetName() << " hits back, dealing " << monsterDamage << " damage.\n";
+
+        if (player.GetHealth() <= 0)
+        {
+            cout << "You have been defeated by " << monster.GetName() << "!\n";
+            return -1;  //monster wins
+        }
+    }
 
     return player.GetHealth();
 }
@@ -99,7 +176,7 @@ int main()
 
     //vector<AdventureGameMap> gameMap;
 
-
+    srand(time(nullptr)); //seed random number generator once
     vector<Node> gameMap;
 
     // //     // build all nodes
@@ -283,55 +360,84 @@ int main()
 
     // // build assets
     // //
-    Asset flashlight("Flashlight", "A flashlight can be very useful, especially in dark places.", 50, false);
-    Asset hammer("Hammer", "A hammer to help defend yourself", 150, true);
-    Asset purplehaze("Purple haze", "A spell that renders opponents helpless.", 250, true);
-    Asset rustynail("Rusty nail", "Infect an opponent with tetanus.", 100, true);
-    Asset drinkingwater("Drinking water", "This may keep you from going thirsty.", 50, false);
+    // These assets are in the form of souvenirs that the player can buy with their points
+    Asset magnet("Magnet", "A nice souvenir to put on the fridge at home.", 20, false);
+    Asset mug("Mug", "A nice souvenir, you can use it to hold your coffee/tea.", 25, false);
+    Asset keychain("Keychain", "A cool souvenir, you can carry a reminder of your trip with you.", 8, false);
+    Asset scarf("Scarf", "Nice find! This souvenir is one you can wear for years.", 50, false);
+    Asset drinkingwater("Drinking water", "This may keep you from going thirsty.", 80, false);
+    Asset picture("Picture", "A great picture to remember this by", 20, false);
+    Asset snack("Snack", "A snake is great for when you get hungry", 100, false);
+    Asset hammer("Hammer", "this is a good weapon to have when faced with monsters.", 500, true);
+    Asset gun("Gun", "Weapon for battling monsters.", 1000, true);
+    Asset knife("Knife", "Great for taking down opponents.", 500, true);
+    Asset bat("Bat", "Weapon for monsters looking for a beating", 300, true);
 
     // randomly add assets to nodes
     int numOfNodes = gameMap.size();
 
-    srand(time(nullptr)); // seed the random number generator
     int randNode = rand() % numOfNodes;
-    gameMap[randNode].AddAsset(&flashlight);
+    gameMap[randNode].AddAsset(&magnet);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&mug);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&keychain);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&scarf);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&drinkingwater);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&picture);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddAsset(&snack);
 
     randNode = rand() % numOfNodes;
     gameMap[randNode].AddAsset(&hammer);
 
     randNode = rand() % numOfNodes;
-    gameMap[randNode].AddAsset(&purplehaze);
+    gameMap[randNode].AddAsset(&gun);
 
     randNode = rand() % numOfNodes;
-    gameMap[randNode].AddAsset(&rustynail);
+    gameMap[randNode].AddAsset(&knife);
 
     randNode = rand() % numOfNodes;
-    gameMap[randNode].AddAsset(&drinkingwater);
+    gameMap[randNode].AddAsset(&bat);
 
     // build monsters
     // randomly add monsters to nodes
-    Monster ghoul("ghoul", 5000, 100);
-    Monster goblin("goblin", 6000, 100);
-    Monster kraken("kraken", 7000, 100);
-    Monster demon("demon", 5000, 100);
-    Monster griffin("griffin", 4000, 100);
+    Monster ness("Loch Ness", 5000, 100);
+    Monster altie("Altie Sea Monster", 6000, 100);
+    Monster whitelady("The Lady in White", 7000, 100);
+    Monster squonk("Squonk", 5000, 100);
+    Monster lizardman("Lizard Man", 4000, 100);
+    Monster wampuscat("Wampus Cat", 5000, 100);
 
     randNode = rand() % numOfNodes;
-    gameMap[randNode].AddMonster(&ghoul);
+    gameMap[randNode].AddMonster(&ness);
 
     randNode = rand() % numOfNodes;
-    gameMap[randNode].AddMonster(&goblin);
+    gameMap[randNode].AddMonster(&altie);
 
     randNode = rand() % numOfNodes;
-    gameMap[randNode].AddMonster(&kraken);
+    gameMap[randNode].AddMonster(&whitelady);
 
     randNode = rand() % numOfNodes;
-    gameMap[randNode].AddMonster(&demon);
+    gameMap[randNode].AddMonster(&squonk);
 
     randNode = rand() % numOfNodes;
-    gameMap[randNode].AddMonster(&griffin);
+    gameMap[randNode].AddMonster(&lizardman);
+
+    randNode = rand() % numOfNodes;
+    gameMap[randNode].AddMonster(&wampuscat);
 
     // get ready to play game below
+    Player player("Player", 12500, 100);
     int nodePointer = 0; // start at home
     string input;
 
@@ -341,7 +447,7 @@ int main()
         // show current node info
         AtNode(gameMap[nodePointer]);
 
-        cout << "Go to node? e(x)it: ";
+        cout << "Enter command ('t' to take, 'd' to drop, 'i' to inspect assets; 'a' to attack monsters; or go to node? e(x)it: ";
         getline(cin, input);
 
         // exit app?
@@ -370,36 +476,78 @@ int main()
         }
 
         // if player wants to take an asset (t hammer)
-        if (input.length() > 1 && input[0] == 't')
+        if (input.length() > 1)
         {
-            string lastWord = getLastWord(input);
-        }
+            string lastWord = getLastWord(input.substr(2));
+            if (input[0] == 't')
+            {
+                for (auto &asset : gameMap[nodePointer].GetAssets())
+                {
+                    if (asset->GetName() == lastWord)
+                    {
+                        player.AddAsset(*asset);
+                        gameMap[nodePointer].RemoveAsset(asset);
+                        cout << "Taken" << lastWord << "." << endl;
+                        break;
+                    }
+                }
+            }
+            else if (input[0] == 'a')
+            {
+                vector<Asset> offensiveAssets = player.GetOffensiveAssets();
+                for (auto &asset : player.GetAssets())
+                {
+                    if (asset.isOffensive())
+                    {
+                        offensiveAssets.push_back(asset);
+                    }
+                }
+                for (auto &monster : gameMap[nodePointer].GetMonsters())
+                {
+                    if (monster->GetName() == lastWord)
+                    {
+                        int result = Battle(player, *monster, offensiveAssets);
+                        break;
+                    }
+                }
+            }
+            else if (input[0] == 'd')
+            {
+                Asset* asset = player.RemoveAssetByName(lastWord);
+                if (asset)
+                {
+                    gameMap[nodePointer].AddAsset(asset);
+                    cout << "Dropped " << lastWord << "." << endl;
+                }
+            }
+            else if (input[0] == 'i')
+            {
+                for (auto &asset : gameMap[nodePointer].GetAssets())
+                {
+                    if (asset->GetName() == lastWord)
+                    {
+                        cout << "Inspecting " << asset->GetMessage() << endl;
+                        break;
+                    }
+                }
+            }
 
-        // if player wants to attack a monster (a kraken)
-        if (input.length() > 1 && input[0] == 'a')
-        {
-            string lastWord = getLastWord(input);
+            
         }
-
-        // if player wants to drop an asset (d hammer)
-        if (input.length() > 1 && input[0] == 'd')
-        {
-            string lastWord = getLastWord(input);
-        }
-
-        // if player wants to inspect an asset (i hammer)
-        if (input.length() > 1 && input[0] == 'i')
-        {
-            string lastWord = getLastWord(input);
-        }
-
-        cout << "Dir: " << dir << endl;
-        if (dir >= 0)
-            nodePointer = dir;
         else
-            cout << "Not a valid node address\n";
+        {
+            cout << "Dir: " << dir << endl;
+            if (dir >= 0)
+                nodePointer = dir;
+            else
+                cout << "Not a valid node address\n";
 
-        cout << endl;
+            cout << endl;
+
+        }
+
+
+        
     }
     return 0;
 }
