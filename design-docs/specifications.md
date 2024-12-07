@@ -2,54 +2,45 @@
 
 ## Game Description
 
-Chanticleer's Adventure Game is a single player text-based adventure game. The object of the game is to visit as many tourest locations as possible from each state. The player moves through the game by issuing text commands such as west, take keychain, drop scarf. After each movement, the game will respond by telling the player where they are currently located by describing their surroundings. Each location may have several paths in any number of directions. Each location may contain objects of interest with clues to where the Bird of Happiness might be located and/or danger from lurking Hobgoblins and hired Specters (ghosts). Along the way, the player can pick up items that will help fight enemies, unlock clues, and find the Bird of Thule. The game can be saved and opened at the same location and game parameters.
+Chanticleer's Adventure Game is a single player text-based adventure game. The object of the game is to visit as many states as possible and visit their respective monuments and tourist spots. The player moves through the game by issuing text commands such as west, take keychain, or drop mug. After each movement, the game will respond by telling the player where they are currently located by describing their surroundings. Each location may have several paths in any number of directions. Each location may contain objects that will help you defeat monsters and souvenirs that the player can collect to remember their trip. The game can be saved and opened at the same location and game parameters.
 
 ## Game parameters are:
 
 -	Player starts with health worth 12,500 points
--	Player will have a certain amount of time to find the Bird of Knowledge
--	Player gain or lose points depending on the events that happen during the game
--	Player loses the game if she runs out of points or time
+-	Player will have a certain amount of time to travel to as many locations as possible.
+-	Player gain or lose points depending on the souvenirs they get and monsters faced during the game
+-	Player loses the game if they run out of points or time
 
 ## Game objects of interest:
-
--	Bird of Knowledge (BOK) – Rescue to win the game 
--	Hobgoblins – run the city of Benightedness
+ 
 -	Player – Chants Adventure is a single player game
--	Benightedness - world
+-	United States of America - world
 -	Path – all paths are bi-directional
 -	Location – points on the map
 -	Directions - node number or name
--	Objects – help or hurt the quest in finding BOH
--	Specters – hired by Hobgoblins to do their dirty work such as stealing health points
+-	Objects – help or hurt the quest during their travels
 
 ## List of actions (use: verb + noun) examples:
 
--	Walk, Take, Drop, Examine, Read, Push, Pull, Kick, Spray, Sit, Stand
+-	Walk, Take, Drop, Inspect, Attack
 -	Inventory (used to show list of items a player holds)
 
 ## Game Objects
 
-	Game objects all have a value in points. Also, not all game objects can be picked up by the player. Some may offer only clues; for example, on how to find the BOK. Some objects can be taken by the player but other may not be picked up. The player may pick up an object and drop it at another location in the game.
+	Game objects all have a value in points. Also, not all game objects can be picked up by the player. Some objects can be taken by the player but other may not be picked up. The player may pick up an object and drop it at another location in the game.
 
 ## Possible list of objects;
--	Flashlight
--	Atomic Map
--	Compass
--	Screwdriver
--	Hammer
--	Polyglot (translator)
--	Treasure
--	Hobgoblin Shield
--	Garden Hose
--	Chest
--	Sign
--	Rabbit Cage
--	Paper Bag
--	Captain’s Chair
--	Purple Haze
+-	Magnet
+-	Scarf
+-	Keychain
+-	Picture
+-	Mug 
 -	Drinking Glass
--	Rusty Nail
+-	Snack
+-	Hammer
+-	Gun
+-	Knife
+-	Bat
 
 ## Possible Game Map Locations (Flushed out during storyboarding)
 
