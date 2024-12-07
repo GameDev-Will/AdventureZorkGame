@@ -19,5 +19,6 @@ namespace chants
         void AddAsset(Asset asset);
         int GetTotalAssetValue();
         vector<Asset> GetOffensiveAssets();  
+        vector<Asset> GetAssets(); 
     };
 }
