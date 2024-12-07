@@ -44,6 +44,15 @@ namespace chants
         _assets.push_back(asset);
     }
 
+    void Node::RemoveAsset(Asset *asset) {
+        
+        std::vector<Asset *>::iterator it = std::find(_assets.begin(), _assets.end(), asset);
+        
+        if (it != _assets.end()) {
+            _assets.erase(it);  // Remove the asset from the vector
+        }
+    }
+
     vector<Asset *> Node::GetAssets()
     {
         return _assets;
